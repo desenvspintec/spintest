@@ -2,11 +2,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>br.com.LgrApp</groupId>
-    <artifactId>Banco</artifactId>
-    <packaging>war</packaging>
+    <groupId>br.com.spin</groupId>
+    <artifactId>spinteste</artifactId>
     <version>1.0</version>
-    <name>Banco</name>
+    <packaging>war</packaging>
+
+    <name>spinteste</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
@@ -31,12 +32,6 @@
             <artifactId>javaee-web-api</artifactId>
             <version>7.0</version>
             <scope>provided</scope>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.wildfly/wildfly-security -->
-        <dependency>
-            <groupId>org.wildfly</groupId>
-            <artifactId>wildfly-security</artifactId>
-            <version>10.0.0.Final</version>
         </dependency>
     </dependencies>
 
