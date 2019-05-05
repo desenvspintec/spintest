@@ -5,6 +5,7 @@
  */
 package br.com.spin.spintest.model;
 
+import br.com.spin.spintest.base.annotations.RestQuery;
 import br.com.spin.spintest.base.SAbstractEntity;
 import java.io.Serializable;
 import java.util.Date;
@@ -30,6 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author adm
  */
 @Entity
+@RestQuery(rest = "baselineplanejado")
 @Table(name = "baseline_planejado")
 @XmlRootElement
 @NamedQueries({

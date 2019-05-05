@@ -29,21 +29,16 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(br.com.spin.spintest.base.responsemappers.EJBTransactionRolledbackExceptionMapper.class);
         resources.add(br.com.spin.spintest.controller.v1.BaselinePlanejadoControllerV1.class);
         resources.add(br.com.spin.spintest.controller.v1.CasoTesteControllerV1.class);
         resources.add(br.com.spin.spintest.controller.v1.CentralCompanyControllerV1.class);
         resources.add(br.com.spin.spintest.controller.v1.CidadeControllerV1.class);
         resources.add(br.com.spin.spintest.controller.v1.EmpresaControllerV1.class);
-        resources.add(br.com.spin.spintest.controller.v1.EstadoControllerV1.class);
         resources.add(br.com.spin.spintest.controller.v1.FornecedorControllerV1.class);
         resources.add(br.com.spin.spintest.controller.v1.FuncionalidadeControllerV1.class);
-        resources.add(br.com.spin.spintest.controller.v1.PaisControllerV1.class);
-        resources.add(br.com.spin.spintest.controller.v1.PassoTesteControllerV1.class);
-        resources.add(br.com.spin.spintest.controller.v1.PessoaFisicaControllerV1.class);
-        resources.add(br.com.spin.spintest.controller.v1.PlanoTesteControllerV1.class);
         resources.add(br.com.spin.spintest.controller.v1.ProdutoControllerV1.class);
-        resources.add(br.com.spin.spintest.controller.v1.ProjetoTesteControllerV1.class);
-        resources.add(br.com.spin.spintest.controller.v1.SuiteTesteControllerV1.class);
+        resources.add(br.com.spin.spintest.controller.v1.QueryController.class);
         resources.add(br.com.spin.spintest.filters.CORSFilter.class);
     }
     

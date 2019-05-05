@@ -5,6 +5,8 @@
  */
 package br.com.spin.spintest.model;
 
+import br.com.spin.spintest.base.SAbstractEntity;
+import br.com.spin.spintest.base.annotations.RestQuery;
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -26,13 +28,14 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author lucas
  */
 @Entity
+@RestQuery(rest = "cidade")
 @Table(name = "cidade")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Cidade.findAll", query = "SELECT c FROM Cidade c")
     , @NamedQuery(name = "Cidade.findById", query = "SELECT c FROM Cidade c WHERE c.id = :id")
     , @NamedQuery(name = "Cidade.findByNome", query = "SELECT c FROM Cidade c WHERE c.nome = :nome")})
-public class Cidade implements Serializable {
+public class Cidade extends SAbstractEntity<Integer>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -61,6 +64,7 @@ public class Cidade implements Serializable {
         this.nome = nome;
     }
 
+    @Override
     public Integer getId() {
         return id;
     }

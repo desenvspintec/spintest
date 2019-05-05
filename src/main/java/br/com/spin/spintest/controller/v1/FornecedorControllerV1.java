@@ -5,19 +5,13 @@
  */
 package br.com.spin.spintest.controller.v1;
 
-import br.com.spin.spintest.base.AbstractDAO;
 import br.com.spin.spintest.model.Fornecedor;
 import br.com.spin.spintest.service.v1.FornecedorServiceV1;
 import java.util.List;
-import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;

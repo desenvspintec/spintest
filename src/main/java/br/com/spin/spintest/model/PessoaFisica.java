@@ -5,6 +5,7 @@
  */
 package br.com.spin.spintest.model;
 
+import br.com.spin.spintest.base.annotations.RestQuery;
 import br.com.spin.spintest.base.SAbstractEntity;
 import java.io.Serializable;
 import java.util.Date;
@@ -29,6 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "pessoa_fisica")
+@RestQuery(rest = "pessoafisica")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "PessoaFisica.findAll", query = "SELECT p FROM PessoaFisica p")
