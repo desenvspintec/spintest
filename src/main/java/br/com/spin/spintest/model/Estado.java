@@ -9,6 +9,7 @@ import br.com.spin.spintest.base.annotations.RestQuery;
 import br.com.spin.spintest.base.SAbstractEntity;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -20,6 +21,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -63,7 +66,27 @@ public class Estado extends SAbstractEntity<Integer> implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "pais_id")
-    private int paisId;
+    private Integer paisId;
+
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "user_id")
+    private String userId;
+
+    @NotNull
+    @Column(name = "created_at")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdAt;
+
+    @NotNull
+    @Column(name = "updated_at")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updatedAt;
+
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "updated_user_id")
+    private String updatedUserId;
 
     public Estado() {
     }
@@ -72,7 +95,7 @@ public class Estado extends SAbstractEntity<Integer> implements Serializable {
         this.id = id;
     }
 
-    public Estado(Integer id, String nome, String uf, int paisId) {
+    public Estado(Integer id, String nome, String uf, Integer paisId) {
         this.id = id;
         this.nome = nome;
         this.uf = uf;
@@ -104,11 +127,11 @@ public class Estado extends SAbstractEntity<Integer> implements Serializable {
         this.uf = uf;
     }
 
-    public int getPaisId() {
+    public Integer getPaisId() {
         return paisId;
     }
 
-    public void setPaisId(int paisId) {
+    public void setPaisId(Integer paisId) {
         this.paisId = paisId;
     }
 
@@ -144,6 +167,46 @@ public class Estado extends SAbstractEntity<Integer> implements Serializable {
 
     public void setCidadeCollection(Collection<Cidade> cidadeCollection) {
         this.cidadeCollection = cidadeCollection;
+    }
+
+    @Override
+    public String getUpdatedUserId() {
+        return updatedUserId;
+    }
+
+    @Override
+    public void setUpdatedUserId(String updatedUserId) {
+        this.updatedUserId = updatedUserId;
+    }
+
+    @Override
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    @Override
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    @Override
+    public String getUserId() {
+        return userId;
+    }
+
+    @Override
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    @Override
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    @Override
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
 }

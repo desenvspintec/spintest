@@ -8,6 +8,7 @@ package br.com.spin.spintest.model;
 import br.com.spin.spintest.base.SAbstractEntity;
 import br.com.spin.spintest.base.annotations.RestQuery;
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +18,8 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -63,6 +66,27 @@ public class FornecedorContato extends SAbstractEntity<Integer> implements Seria
     private Long ramal;
     @Column(name = "fornecedor_id")
     private Integer fornecedorId;
+    @Column(name = "email")
+    private String email;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "user_id")
+    private String userId;
+
+    @NotNull
+    @Column(name = "created_at")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdAt;
+
+    @NotNull
+    @Column(name = "updated_at")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updatedAt;
+
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "updated_user_id")
+    private String updatedUserId;
 
     public FornecedorContato() {
     }
@@ -128,6 +152,14 @@ public class FornecedorContato extends SAbstractEntity<Integer> implements Seria
         this.fornecedorId = fornecedorId;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -151,6 +183,46 @@ public class FornecedorContato extends SAbstractEntity<Integer> implements Seria
     @Override
     public String toString() {
         return "br.com.spin.spintest.model.FornecedorContato[ id=" + id + " ]";
+    }
+    
+     @Override
+    public String getUpdatedUserId() {
+        return updatedUserId;
+    }
+
+    @Override
+    public void setUpdatedUserId(String updatedUserId) {
+        this.updatedUserId = updatedUserId;
+    }
+
+    @Override
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    @Override
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    @Override
+    public String getUserId() {
+        return userId;
+    }
+
+    @Override
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    @Override
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    @Override
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
 }

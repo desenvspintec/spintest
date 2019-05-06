@@ -9,29 +9,24 @@ import br.com.spin.spintest.base.annotations.RestQueryAfterPost;
 import br.com.spin.spintest.base.annotations.RestQueryBeforePost;
 import br.com.spin.spintest.base.interfaces.events.RestQueryEventAfterPostInterface;
 import br.com.spin.spintest.base.interfaces.events.RestQueryEventBeforePostInterface;
-import br.com.spin.spintest.model.Empresa;
-import br.com.spin.spintest.service.v1.EmpresaServiceV1;
-import javax.inject.Inject;
+import br.com.spin.spintest.model.PassoTeste;
 
 /**
  *
  * @author lucas
  */
-@RestQueryBeforePost(rest = "empresa")
-@RestQueryAfterPost(rest = "empresa")
-public class EmpresaRestQueryEvents implements RestQueryEventBeforePostInterface<Empresa>, RestQueryEventAfterPostInterface<Empresa> {
-
-    @Inject
-    private EmpresaServiceV1 empresaServiceV1;
+@RestQueryBeforePost(rest = "passoteste")
+@RestQueryAfterPost(rest = "passoteste")
+public class PassoTesteRestQueryEvents implements RestQueryEventBeforePostInterface<PassoTeste>, RestQueryEventAfterPostInterface<PassoTeste> {
 
     @Override
-    public void beforePost(Empresa empresa) {
-    
+    public void beforePost(PassoTeste entity) {
+
     }
 
     @Override
-    public void afterPost(Empresa entity) {
-     
+    public void afterPost(PassoTeste entity) {
+
     }
 
 }

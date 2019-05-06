@@ -67,24 +67,34 @@ public class Funcionalidade extends SAbstractEntity<Integer> implements Serializ
     @Size(min = 1, max = 7)
     @Column(name = "situacao")
     private String situacao;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "user_id")
-    private int userId;
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "produto_id")
-    private int produtoId;
+    private Integer produtoId;
     @Basic(optional = false)
     @NotNull
     @Column(name = "empresa_id")
-    private int empresaId;
+    private Integer empresaId;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "user_id")
+    private String userId;
+
+    @NotNull
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
+
+    @NotNull
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
+
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "updated_user_id")
+    private String updatedUserId;
 
     public Funcionalidade() {
     }
@@ -93,7 +103,7 @@ public class Funcionalidade extends SAbstractEntity<Integer> implements Serializ
         this.id = id;
     }
 
-    public Funcionalidade(Integer id, String nome, String observacao, String situacao, int userId, int produtoId, int empresaId) {
+    public Funcionalidade(Integer id, String nome, String observacao, String situacao, String userId, Integer produtoId, Integer empresaId) {
         this.id = id;
         this.nome = nome;
         this.observacao = observacao;
@@ -136,44 +146,20 @@ public class Funcionalidade extends SAbstractEntity<Integer> implements Serializ
         this.situacao = situacao;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public int getProdutoId() {
+    public Integer getProdutoId() {
         return produtoId;
     }
 
-    public void setProdutoId(int produtoId) {
+    public void setProdutoId(Integer produtoId) {
         this.produtoId = produtoId;
     }
 
-    public int getEmpresaId() {
+    public Integer getEmpresaId() {
         return empresaId;
     }
 
-    public void setEmpresaId(int empresaId) {
+    public void setEmpresaId(Integer empresaId) {
         this.empresaId = empresaId;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
     }
 
     @Override
@@ -201,4 +187,43 @@ public class Funcionalidade extends SAbstractEntity<Integer> implements Serializ
         return "br.com.spin.spinteste.model.Funcionalidade[ id=" + id + " ]";
     }
 
+    @Override
+    public String getUpdatedUserId() {
+        return updatedUserId;
+    }
+
+    @Override
+    public void setUpdatedUserId(String updatedUserId) {
+        this.updatedUserId = updatedUserId;
+    }
+
+    @Override
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    @Override
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    @Override
+    public String getUserId() {
+        return userId;
+    }
+
+    @Override
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    @Override
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    @Override
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
 }

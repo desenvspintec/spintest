@@ -67,7 +67,7 @@ public class PassoTeste extends SAbstractEntity<Integer> implements Serializable
     @Basic(optional = false)
     @NotNull
     @Column(name = "sequencia")
-    private int sequencia;
+    private Integer sequencia;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 12)
@@ -78,24 +78,34 @@ public class PassoTeste extends SAbstractEntity<Integer> implements Serializable
     @Size(min = 1, max = 7)
     @Column(name = "situacao")
     private String situacao;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "user_id")
-    private int userId;
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "empresa_id")
-    private int empresaId;
+    private Integer empresaId;
     @Basic(optional = false)
     @NotNull
     @Column(name = "caso_teste_id")
-    private int casoTesteId;
+    private Integer casoTesteId;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "user_id")
+    private String userId;
+
+    @NotNull
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
+
+    @NotNull
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
+
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "updated_user_id")
+    private String updatedUserId;
 
     public PassoTeste() {
     }
@@ -104,7 +114,7 @@ public class PassoTeste extends SAbstractEntity<Integer> implements Serializable
         this.id = id;
     }
 
-    public PassoTeste(Integer id, String acao, String resultado, int sequencia, String tipoTeste, String situacao, int userId, int empresaId, int casoTesteId) {
+    public PassoTeste(Integer id, String acao, String resultado, Integer sequencia, String tipoTeste, String situacao, String userId, Integer empresaId, Integer casoTesteId) {
         this.id = id;
         this.acao = acao;
         this.resultado = resultado;
@@ -141,11 +151,11 @@ public class PassoTeste extends SAbstractEntity<Integer> implements Serializable
         this.resultado = resultado;
     }
 
-    public int getSequencia() {
+    public Integer getSequencia() {
         return sequencia;
     }
 
-    public void setSequencia(int sequencia) {
+    public void setSequencia(Integer sequencia) {
         this.sequencia = sequencia;
     }
 
@@ -165,44 +175,20 @@ public class PassoTeste extends SAbstractEntity<Integer> implements Serializable
         this.situacao = situacao;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public int getEmpresaId() {
+    public Integer getEmpresaId() {
         return empresaId;
     }
 
-    public void setEmpresaId(int empresaId) {
+    public void setEmpresaId(Integer empresaId) {
         this.empresaId = empresaId;
     }
 
-    public int getCasoTesteId() {
+    public Integer getCasoTesteId() {
         return casoTesteId;
     }
 
-    public void setCasoTesteId(int casoTesteId) {
+    public void setCasoTesteId(Integer casoTesteId) {
         this.casoTesteId = casoTesteId;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
     }
 
     @Override
@@ -228,6 +214,46 @@ public class PassoTeste extends SAbstractEntity<Integer> implements Serializable
     @Override
     public String toString() {
         return "br.com.spin.spinteste.model.PassoTeste[ id=" + id + " ]";
+    }
+
+    @Override
+    public String getUpdatedUserId() {
+        return updatedUserId;
+    }
+
+    @Override
+    public void setUpdatedUserId(String updatedUserId) {
+        this.updatedUserId = updatedUserId;
+    }
+
+    @Override
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    @Override
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    @Override
+    public String getUserId() {
+        return userId;
+    }
+
+    @Override
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    @Override
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    @Override
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
 }

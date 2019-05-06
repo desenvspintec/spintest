@@ -87,24 +87,34 @@ public class Fornecedor extends SAbstractEntity<Integer> implements Serializable
     @Size(min = 1, max = 7)
     @Column(name = "situacao")
     private String situacao;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "user_id")
-    private int userId;
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "cidade_id")
-    private int cidadeId;
+    private Integer cidadeId;
     @Basic(optional = false)
     @NotNull
     @Column(name = "empresa_id")
-    private int empresaId;
+    private Integer empresaId;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "user_id")
+    private String userId;
+
+    @NotNull
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
+
+    @NotNull
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
+
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "updated_user_id")
+    private String updatedUserId;
 
     public Fornecedor() {
     }
@@ -113,7 +123,7 @@ public class Fornecedor extends SAbstractEntity<Integer> implements Serializable
         this.id = id;
     }
 
-    public Fornecedor(Integer id, String situacao, int userId, int cidadeId, int empresaId) {
+    public Fornecedor(Integer id, String situacao, String userId, Integer cidadeId, Integer empresaId) {
         this.id = id;
         this.situacao = situacao;
         this.userId = userId;
@@ -202,44 +212,20 @@ public class Fornecedor extends SAbstractEntity<Integer> implements Serializable
         this.situacao = situacao;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public int getCidadeId() {
+    public Integer getCidadeId() {
         return cidadeId;
     }
 
-    public void setCidadeId(int cidadeId) {
+    public void setCidadeId(Integer cidadeId) {
         this.cidadeId = cidadeId;
     }
 
-    public int getEmpresaId() {
+    public Integer getEmpresaId() {
         return empresaId;
     }
 
-    public void setEmpresaId(int empresaId) {
+    public void setEmpresaId(Integer empresaId) {
         this.empresaId = empresaId;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
     }
 
     @Override
@@ -265,6 +251,46 @@ public class Fornecedor extends SAbstractEntity<Integer> implements Serializable
     @Override
     public String toString() {
         return "br.com.spin.spinteste.model.Fornecedor[ id=" + id + " ]";
+    }
+
+    @Override
+    public String getUpdatedUserId() {
+        return updatedUserId;
+    }
+
+    @Override
+    public void setUpdatedUserId(String updatedUserId) {
+        this.updatedUserId = updatedUserId;
+    }
+
+    @Override
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    @Override
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    @Override
+    public String getUserId() {
+        return userId;
+    }
+
+    @Override
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    @Override
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    @Override
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
 }

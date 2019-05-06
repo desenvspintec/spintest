@@ -63,21 +63,31 @@ public class ProjetoTeste extends SAbstractEntity<Integer> implements Serializab
     @Basic(optional = false)
     @NotNull
     @Column(name = "produto_id")
-    private int produtoId;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "user_id")
-    private int userId;
+    private Integer produtoId;
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "empresa_id")
-    private int empresaId;
+    private Integer empresaId;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "user_id")
+    private String userId;
+
+    @NotNull
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
+
+    @NotNull
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
+
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "updated_user_id")
+    private String updatedUserId;
 
     public ProjetoTeste() {
     }
@@ -86,7 +96,7 @@ public class ProjetoTeste extends SAbstractEntity<Integer> implements Serializab
         this.id = id;
     }
 
-    public ProjetoTeste(Integer id, String descricao, String situacao, int produtoId, int userId, int empresaId) {
+    public ProjetoTeste(Integer id, String descricao, String situacao, Integer produtoId, String userId, Integer empresaId) {
         this.id = id;
         this.descricao = descricao;
         this.situacao = situacao;
@@ -120,44 +130,20 @@ public class ProjetoTeste extends SAbstractEntity<Integer> implements Serializab
         this.situacao = situacao;
     }
 
-    public int getProdutoId() {
+    public Integer getProdutoId() {
         return produtoId;
     }
 
-    public void setProdutoId(int produtoId) {
+    public void setProdutoId(Integer produtoId) {
         this.produtoId = produtoId;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public int getEmpresaId() {
+    public Integer getEmpresaId() {
         return empresaId;
     }
 
-    public void setEmpresaId(int empresaId) {
+    public void setEmpresaId(Integer empresaId) {
         this.empresaId = empresaId;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
     }
 
     @Override
@@ -183,6 +169,46 @@ public class ProjetoTeste extends SAbstractEntity<Integer> implements Serializab
     @Override
     public String toString() {
         return "br.com.spin.spinteste.model.ProjetoTeste[ id=" + id + " ]";
+    }
+
+    @Override
+    public String getUpdatedUserId() {
+        return updatedUserId;
+    }
+
+    @Override
+    public void setUpdatedUserId(String updatedUserId) {
+        this.updatedUserId = updatedUserId;
+    }
+
+    @Override
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    @Override
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    @Override
+    public String getUserId() {
+        return userId;
+    }
+
+    @Override
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    @Override
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    @Override
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
 }

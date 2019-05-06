@@ -81,13 +81,22 @@ public class PessoaFisica extends SAbstractEntity<Integer> implements Serializab
     @Basic(optional = false)
     @NotNull
     @Column(name = "user_id")
-    private int userId;
+    private String userId;
+
+    @NotNull
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
+
+    @NotNull
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
+
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "updated_user_id")
+    private String updatedUserId;
 
     public PessoaFisica() {
     }
@@ -96,7 +105,7 @@ public class PessoaFisica extends SAbstractEntity<Integer> implements Serializab
         this.id = id;
     }
 
-    public PessoaFisica(Integer id, int userId) {
+    public PessoaFisica(Integer id, String userId) {
         this.id = id;
         this.userId = userId;
     }
@@ -174,30 +183,6 @@ public class PessoaFisica extends SAbstractEntity<Integer> implements Serializab
         this.nomeUsuario = nomeUsuario;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -221,6 +206,46 @@ public class PessoaFisica extends SAbstractEntity<Integer> implements Serializab
     @Override
     public String toString() {
         return "br.com.spin.spinteste.model.PessoaFisica[ id=" + id + " ]";
+    }
+
+    @Override
+    public String getUpdatedUserId() {
+        return updatedUserId;
+    }
+
+    @Override
+    public void setUpdatedUserId(String updatedUserId) {
+        this.updatedUserId = updatedUserId;
+    }
+
+    @Override
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    @Override
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    @Override
+    public String getUserId() {
+        return userId;
+    }
+
+    @Override
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    @Override
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    @Override
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
 }

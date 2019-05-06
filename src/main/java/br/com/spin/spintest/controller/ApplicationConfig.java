@@ -29,6 +29,7 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(br.com.spin.spintest.base.auth.OAuthInterceptor.class);
         resources.add(br.com.spin.spintest.base.responsemappers.EJBTransactionRolledbackExceptionMapper.class);
         resources.add(br.com.spin.spintest.controller.v1.BaselinePlanejadoControllerV1.class);
         resources.add(br.com.spin.spintest.controller.v1.CasoTesteControllerV1.class);

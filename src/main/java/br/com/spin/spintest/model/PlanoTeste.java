@@ -84,28 +84,38 @@ public class PlanoTeste extends SAbstractEntity<Integer> implements Serializable
     @Size(max = 255)
     @Column(name = "versao_produto")
     private String versaoProduto;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "user_id")
-    private int userId;
+
     @Basic(optional = false)
     @NotNull
     @Column(name = "produto_id")
-    private int produtoId;
+    private Integer produtoId;
     @Basic(optional = false)
     @NotNull
     @Column(name = "projeto_teste_id")
-    private int projetoTesteId;
+    private Integer projetoTesteId;
     @Basic(optional = false)
     @NotNull
     @Column(name = "empresa_id")
-    private int empresaId;
+    private Integer empresaId;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "user_id")
+    private String userId;
+
+    @NotNull
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
+
+    @NotNull
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
+
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "updated_user_id")
+    private String updatedUserId;
 
     public PlanoTeste() {
     }
@@ -114,7 +124,7 @@ public class PlanoTeste extends SAbstractEntity<Integer> implements Serializable
         this.id = id;
     }
 
-    public PlanoTeste(Integer id, String descricao, String observacao, Date dataInicio, Date dataFinal, String situacao, int userId, int produtoId, int projetoTesteId, int empresaId) {
+    public PlanoTeste(Integer id, String descricao, String observacao, Date dataInicio, Date dataFinal, String situacao, String userId, Integer produtoId, Integer projetoTesteId, Integer empresaId) {
         this.id = id;
         this.descricao = descricao;
         this.observacao = observacao;
@@ -184,52 +194,28 @@ public class PlanoTeste extends SAbstractEntity<Integer> implements Serializable
         this.versaoProduto = versaoProduto;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public int getProdutoId() {
+    public Integer getProdutoId() {
         return produtoId;
     }
 
-    public void setProdutoId(int produtoId) {
+    public void setProdutoId(Integer produtoId) {
         this.produtoId = produtoId;
     }
 
-    public int getProjetoTesteId() {
+    public Integer getProjetoTesteId() {
         return projetoTesteId;
     }
 
-    public void setProjetoTesteId(int projetoTesteId) {
+    public void setProjetoTesteId(Integer projetoTesteId) {
         this.projetoTesteId = projetoTesteId;
     }
 
-    public int getEmpresaId() {
+    public Integer getEmpresaId() {
         return empresaId;
     }
 
-    public void setEmpresaId(int empresaId) {
+    public void setEmpresaId(Integer empresaId) {
         this.empresaId = empresaId;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
     }
 
     @Override
@@ -255,6 +241,46 @@ public class PlanoTeste extends SAbstractEntity<Integer> implements Serializable
     @Override
     public String toString() {
         return "br.com.spin.spinteste.model.PlanoTeste[ id=" + id + " ]";
+    }
+
+    @Override
+    public String getUpdatedUserId() {
+        return updatedUserId;
+    }
+
+    @Override
+    public void setUpdatedUserId(String updatedUserId) {
+        this.updatedUserId = updatedUserId;
+    }
+
+    @Override
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    @Override
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    @Override
+    public String getUserId() {
+        return userId;
+    }
+
+    @Override
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    @Override
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    @Override
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
 }
