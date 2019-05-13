@@ -40,6 +40,7 @@ public class ApplicationConfig extends Application {
         resources.add(br.com.spin.spintest.controller.v1.FuncionalidadeControllerV1.class);
         resources.add(br.com.spin.spintest.controller.v1.ProdutoControllerV1.class);
         resources.add(br.com.spin.spintest.controller.v1.QueryController.class);
+        resources.add(br.com.spin.spintest.controller.v1.UserControllerV1.class);
         resources.add(br.com.spin.spintest.filters.CORSFilter.class);
     }
     

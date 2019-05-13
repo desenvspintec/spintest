@@ -11,6 +11,7 @@ import br.com.spin.spintest.base.interfaces.events.RestQueryEventBeforePostInter
 import br.com.spin.spintest.dao.v1.QueryDAOV1;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
@@ -18,6 +19,7 @@ import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.core.MultivaluedMap;
 import org.dom4j.tree.AbstractEntity;
 import org.keycloak.KeycloakPrincipal;
 import org.keycloak.representations.AccessToken;
@@ -35,10 +37,31 @@ public class QueryServiceV1 {
     @Inject
     private HttpServletRequest request;
 
+    @Inject
+    private UserServiceV1 userServiceV1;
+
     private ObjectMapper mapper = new ObjectMapper();
 
-    public List<Object> query(String rest, Map query) {
+    public List<Object> query(String rest, MultivaluedMap<String, String> query) {
         return queryDAOV1.query(rest, query);
+    }
+
+    public Map<String, String> convertMultiToRegularMap(MultivaluedMap<String, String> m) {
+        if (m == null) {
+            return null;
+        }
+        Map<String, String> map = new HashMap<String, String>();
+        for (Map.Entry<String, List<String>> entry : m.entrySet()) {
+            StringBuilder sb = new StringBuilder();
+            for (String s : entry.getValue()) {
+                if (sb.length() > 0) {
+                    sb.append(',');
+                }
+                sb.append(s);
+            }
+            map.put(entry.getKey(), sb.toString());
+        }
+        return map;
     }
 
     public Object save(String rest, Map body) {
@@ -54,14 +77,16 @@ public class QueryServiceV1 {
     }
 
     private void setDefaultValues(String rest, Object obj) {
-        AccessToken token = ((KeycloakPrincipal) request.getUserPrincipal()).getKeycloakSecurityContext().getToken();
-        SAbstractEntity entity = (SAbstractEntity) obj;
-        if (entity.getId() == null) {
-            entity.setCreatedAt(new Date());
-            entity.setUserId(token.getId());
+        AccessToken token = userServiceV1.findAccessToken();
+        if (token != null) {
+            SAbstractEntity entity = (SAbstractEntity) obj;
+            if (entity.getId() == null) {
+                entity.setCreatedAt(new Date());
+                entity.setUserId(token.getId());
+            }
+            entity.setUpdatedAt(new Date());
+            entity.setUpdatedUserId(token.getId());
         }
-        entity.setUpdatedAt(new Date());
-        entity.setUpdatedUserId(token.getId());
 
     }
 

@@ -20,4 +20,12 @@ public class PessoaFisicaDAOV1 extends AbstractDAO<PessoaFisica> {
         super(PessoaFisica.class);
     }
 
+    public PessoaFisica findByUserId(String id) {
+        try {
+            return (PessoaFisica) getEntityManager().createNamedQuery("PessoaFisica.findByUserId").setParameter("userId", id).getSingleResult();
+        } catch (Exception ex) {
+            return null;
+        }
+    }
+
 }

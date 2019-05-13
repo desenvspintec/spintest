@@ -13,9 +13,9 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -23,8 +23,9 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.AbstractQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-
+import javax.ws.rs.core.MultivaluedMap;
 
 /**
  *
@@ -35,10 +36,10 @@ public class QueryDAOV1 {
 
     @PersistenceContext
     private EntityManager entityManager;
- 
+
     private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-    public List<Object> query(String rest, Map<String, String> query) {
+    public List<Object> query(String rest, MultivaluedMap<String, String> query) {
 
         Class<?> classe = RestQueryUtils.findModelClass(rest);
 
@@ -48,10 +49,13 @@ public class QueryDAOV1 {
 
         Root root = cq.from(classe);
         if (query != null) {
+            List<Predicate> predicates = new ArrayList<>();
+            boolean first = true;
             for (String attribute : query.keySet()) {
-                cq.where(cb.equal(root.get(attribute), findObjectQueryValue(classe, query, attribute)));
-            }
+                predicates.add(cb.equal(root.get(attribute), findObjectQueryValue(classe, query, attribute)));
 
+            }
+            cq.where(cb.and(predicates.toArray(new Predicate[predicates.size()])));
         }
         CriteriaQuery select = ((CriteriaQuery) cq).select(root);
         TypedQuery tq = entityManager.createQuery(select);
@@ -61,8 +65,7 @@ public class QueryDAOV1 {
     }
 
     public Object save(String rest, Object body) {
-        
-       
+
         save(body);
         return body;
     }
@@ -85,7 +88,7 @@ public class QueryDAOV1 {
 
     }
 
-    private Object findObjectQueryValue(Class<?> classe, Map query, String attribute) {
+    private Object findObjectQueryValue(Class<?> classe, MultivaluedMap<String, String> query, String attribute) {
         Object value = null;
         for (Field field : classe.getDeclaredFields()) {
             if (field.getName().equalsIgnoreCase(attribute)) {
@@ -140,8 +143,6 @@ public class QueryDAOV1 {
         }
         return value;
     }
-
-  
 
     private void insert(Object entity) {
         entityManager.persist(entity);

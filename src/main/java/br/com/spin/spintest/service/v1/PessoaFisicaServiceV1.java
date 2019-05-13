@@ -26,4 +26,8 @@ public class PessoaFisicaServiceV1 extends AbstractService<PessoaFisica> {
         return pessoaFisicaDAOV1;
     }
 
+    public PessoaFisica findByUserId(String id) {
+        return pessoaFisicaDAOV1.findByUserId(id);
+    }
+
 }

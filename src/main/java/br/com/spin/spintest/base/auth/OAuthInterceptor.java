@@ -14,6 +14,8 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 import org.keycloak.KeycloakPrincipal;
 import org.keycloak.KeycloakSecurityContext;
+import org.keycloak.adapters.AdapterDeploymentContext;
+import org.keycloak.adapters.KeycloakDeployment;
 import org.keycloak.representations.AccessToken;
 
 /**
@@ -29,12 +31,13 @@ public class OAuthInterceptor implements ContainerRequestFilter {
     @Override
     public void filter(ContainerRequestContext requestContext) throws IOException {
 
-        if (request.getUserPrincipal() == null) {
-            requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).build());
-            return;
-        }
-        AccessToken token = ((KeycloakPrincipal) request.getUserPrincipal()).getKeycloakSecurityContext().getToken();
-        System.out.println(token.getId());
+
+//        if (request.getUserPrincipal() == null) {
+//            requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).build());
+//            return;
+//        }
+//        AccessToken token = ((KeycloakPrincipal) request.getUserPrincipal()).getKeycloakSecurityContext().getToken();
+//        System.out.println(token.getId());
     }
 
 }

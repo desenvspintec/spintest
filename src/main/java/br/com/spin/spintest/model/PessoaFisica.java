@@ -35,14 +35,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "PessoaFisica.findAll", query = "SELECT p FROM PessoaFisica p")
     , @NamedQuery(name = "PessoaFisica.findById", query = "SELECT p FROM PessoaFisica p WHERE p.id = :id")
-    , @NamedQuery(name = "PessoaFisica.findByNome", query = "SELECT p FROM PessoaFisica p WHERE p.nome = :nome")
     , @NamedQuery(name = "PessoaFisica.findByDataNascimento", query = "SELECT p FROM PessoaFisica p WHERE p.dataNascimento = :dataNascimento")
     , @NamedQuery(name = "PessoaFisica.findByRg", query = "SELECT p FROM PessoaFisica p WHERE p.rg = :rg")
     , @NamedQuery(name = "PessoaFisica.findByCpf", query = "SELECT p FROM PessoaFisica p WHERE p.cpf = :cpf")
     , @NamedQuery(name = "PessoaFisica.findBySexo", query = "SELECT p FROM PessoaFisica p WHERE p.sexo = :sexo")
     , @NamedQuery(name = "PessoaFisica.findByTelefoneFixo", query = "SELECT p FROM PessoaFisica p WHERE p.telefoneFixo = :telefoneFixo")
     , @NamedQuery(name = "PessoaFisica.findByTelefoneCel", query = "SELECT p FROM PessoaFisica p WHERE p.telefoneCel = :telefoneCel")
-    , @NamedQuery(name = "PessoaFisica.findByNomeUsuario", query = "SELECT p FROM PessoaFisica p WHERE p.nomeUsuario = :nomeUsuario")
     , @NamedQuery(name = "PessoaFisica.findByUserId", query = "SELECT p FROM PessoaFisica p WHERE p.userId = :userId")
     , @NamedQuery(name = "PessoaFisica.findByCreatedAt", query = "SELECT p FROM PessoaFisica p WHERE p.createdAt = :createdAt")
     , @NamedQuery(name = "PessoaFisica.findByUpdatedAt", query = "SELECT p FROM PessoaFisica p WHERE p.updatedAt = :updatedAt")})
@@ -54,9 +52,9 @@ public class PessoaFisica extends SAbstractEntity<Integer> implements Serializab
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Size(max = 255)
-    @Column(name = "nome")
-    private String nome;
+//    @Size(max = 255)
+//    @Column(name = "nome")
+//    private String nome;
     @Column(name = "data_nascimento")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataNascimento;
@@ -75,9 +73,9 @@ public class PessoaFisica extends SAbstractEntity<Integer> implements Serializab
     @Size(max = 255)
     @Column(name = "telefone_cel")
     private String telefoneCel;
-    @Size(max = 255)
-    @Column(name = "nome_usuario")
-    private String nomeUsuario;
+//    @Size(max = 255)
+//    @Column(name = "nome_usuario")
+//    private String nomeUsuario;
     @Basic(optional = false)
     @NotNull
     @Column(name = "user_id")
@@ -119,14 +117,13 @@ public class PessoaFisica extends SAbstractEntity<Integer> implements Serializab
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
+//    public String getNome() {
+//        return nome;
+//    }
+//
+//    public void setNome(String nome) {
+//        this.nome = nome;
+//    }
     public Date getDataNascimento() {
         return dataNascimento;
     }
@@ -175,14 +172,13 @@ public class PessoaFisica extends SAbstractEntity<Integer> implements Serializab
         this.telefoneCel = telefoneCel;
     }
 
-    public String getNomeUsuario() {
-        return nomeUsuario;
-    }
-
-    public void setNomeUsuario(String nomeUsuario) {
-        this.nomeUsuario = nomeUsuario;
-    }
-
+//    public String getNomeUsuario() {
+//        return nomeUsuario;
+//    }
+//
+//    public void setNomeUsuario(String nomeUsuario) {
+//        this.nomeUsuario = nomeUsuario;
+//    }
     @Override
     public int hashCode() {
         int hash = 0;

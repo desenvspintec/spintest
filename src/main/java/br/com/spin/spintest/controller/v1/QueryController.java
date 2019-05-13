@@ -16,6 +16,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
@@ -30,24 +31,24 @@ public class QueryController {
 
     @Inject
     private QueryServiceV1 queryServiceV1;
-    
+
     @GET
     @Path("{rest}")
     public Response query(@PathParam("rest") String rest, @Context UriInfo uriInfo) {
-        Map query = uriInfo.getQueryParameters();
+        MultivaluedMap<String, String> query = uriInfo.getQueryParameters();
         return Response.ok(queryServiceV1.query(rest, query)).build();
     }
-    
+
     @GET
     @Path("{rest}/{id}")
-    public Response queryById(@PathParam("rest") String rest,@PathParam("id") String id){
+    public Response queryById(@PathParam("rest") String rest, @PathParam("id") String id) {
         return Response.ok(queryServiceV1.queryById(rest, id)).build();
     }
-    
+
     @POST
     @Path("{rest}")
-    public Response save(@PathParam("rest") String rest, Map body){
-         return Response.ok(queryServiceV1.save(rest, body)).build();
+    public Response save(@PathParam("rest") String rest, Map body) {
+        return Response.ok(queryServiceV1.save(rest, body)).build();
     }
 
 }
