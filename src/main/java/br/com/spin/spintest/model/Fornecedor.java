@@ -58,7 +58,7 @@ public class Fornecedor extends SAbstractEntity<Integer> implements Serializable
     @Column(name = "id")
     private Integer id;
     @Lob
-    @Size(max = 2147483647)
+    @Size(max = 255)
     @Column(name = "descricao")
     private String descricao;
     @Size(max = 255)
